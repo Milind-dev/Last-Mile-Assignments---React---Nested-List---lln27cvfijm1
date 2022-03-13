@@ -155,7 +155,7 @@ const states = [
 ];
 
 function App() {
-  const [state, setState] = useState();
+  const [state, setState] = useState("Madhya Pradesh");
   const [city, setcity] = useState();
   return (
     <div id="main">
@@ -169,6 +169,7 @@ function App() {
         {states.map((ele, index) => {
           let idn = index + 1;
           idn = `state${idn}`;
+          console.log(idn);
           return <option id={idn}>{ele.name}</option>;
         })}
       </select>
@@ -176,7 +177,12 @@ function App() {
         states.map((ele) => {
           if (ele.name === state) {
             return (
-              <select>
+              <select
+                value={city}
+                onChange={(e) => {
+                  setcity(e.target.value);
+                }}
+              >
                 {ele.cities.map((ele, ind) => {
                   let idn = ind + 1;
                   idn = `city${idn}`;
@@ -184,6 +190,24 @@ function App() {
                 })}
               </select>
             );
+          }
+        })}
+      {city &&
+        states.map((ele) => {
+          if (ele.name === state) {
+            return ele.cities.map((ele) => {
+              if (ele.name === city) {
+                return (
+                  <select>
+                    {ele.towns.map((ele, index) => {
+                      let idn = index + 1;
+                      idn = `towns${idn}`;
+                      return <option id={idn}>{ele.name}</option>;
+                    })}
+                  </select>
+                );
+              }
+            });
           }
         })}
     </div>
