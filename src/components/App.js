@@ -156,13 +156,14 @@ const states = [
 
 function App() {
   const [state, setState] = useState("Madhya Pradesh");
-  const [city, setcity] = useState("Indore");
+  const [city, setcity] = useState();
   return (
     <div id="main">
       <select
         value={state}
         onChange={(e) => {
           setState(e.target.value);
+
           console.log(e.target.value);
         }}
       >
