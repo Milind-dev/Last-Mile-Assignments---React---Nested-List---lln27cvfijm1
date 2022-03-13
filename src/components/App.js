@@ -156,7 +156,7 @@ const states = [
 
 function App() {
   const [state, setState] = useState("Madhya Pradesh");
-  const [city, setcity] = useState();
+  const [city, setcity] = useState("Indore");
   return (
     <div id="main">
       <select
